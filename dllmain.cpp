@@ -80,10 +80,10 @@ BOOL WINAPI DllMain(HINSTANCE instance, DWORD reason, LPVOID)
                 return FALSE;
 
             DWORD oldProtect;
-            VirtualProtect(reinterpret_cast<void*>(addr1), 1, PAGE_EXECUTE_READWRITE, &oldProtect);
+            VirtualProtect(reinterpret_cast<void*>(addr1), 2, PAGE_EXECUTE_READWRITE, &oldProtect);
             *reinterpret_cast<uint8_t*>(addr1) = 0x90;
             *reinterpret_cast<uint8_t*>(addr1 + 1) = 0x90;
-            VirtualProtect(reinterpret_cast<void*>(addr1), 1, oldProtect, &oldProtect);
+            VirtualProtect(reinterpret_cast<void*>(addr1), 2, oldProtect, &oldProtect);
 
             VirtualProtect(reinterpret_cast<void*>(addr2), 1, PAGE_EXECUTE_READWRITE, &oldProtect);
             *reinterpret_cast<uint8_t*>(addr2) = 0xEB;
